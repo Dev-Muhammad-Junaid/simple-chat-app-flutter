@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:simple_chat_app/chat_bubble.dart';
+
+import 'chat_input.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -31,99 +34,12 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           Expanded(
-
-            child: ListView(children: [
-              Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text("This is the first Message"),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Image.network(
-                            'https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png',
-                            height: 200,
-                          )
-                        ],
-                      ),
-                      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text("This is the first Message"),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Image.network(
-                            'https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png',
-                            height: 200,
-                          )
-                        ],
-                      ),
-                      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text("This is the first Message"),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Image.network(
-                          'https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png',
-                          height: 200,
-                        )
-                      ],
-                    ),
-                    margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                ],
-              ),
-            ]),
+            child: ListView.builder(itemCount:10,itemBuilder: (context,index){
+              return ChatBubble(
+                  alignment: index%2==0?Alignment.centerLeft : Alignment.centerRight,
+                  message: "This is the first Message");}),
           ),
-                Container(
-                  height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
-                        color: Colors.black,
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.send),
-                          color: Colors.black),
-                    ],
-                  ),
-                  decoration: BoxDecoration(color: Colors.grey[600]),
-                )
-        ],
+          ChatInput()],
       ),
     );
   }
