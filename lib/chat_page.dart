@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_bubble.dart';
+import 'package:simple_chat_app/login_page.dart';
 
 import 'chat_input.dart';
 
@@ -16,7 +17,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        elevation: 0,
+        elevation: 1,
         title: Text(
           "Hi,Junaid",
           style: TextStyle(fontSize: 20, color: Colors.black),
@@ -24,6 +25,7 @@ class _ChatPageState extends State<ChatPage> {
         actions: [
           IconButton(
             onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
               print("Button Pressed");
             },
             icon: Icon(Icons.login),
