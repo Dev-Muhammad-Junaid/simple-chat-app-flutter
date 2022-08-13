@@ -1,10 +1,10 @@
 
-
+import 'package:simple_chat_app/login_text_field.dart';
+import 'package:simple_chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_page.dart';
 
 class LoginPage extends StatelessWidget {
-  final loginstyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 30);
   final usernamecontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
@@ -32,12 +32,12 @@ class LoginPage extends StatelessWidget {
             children: [
               Text(
                 "Signup Now!️",
-                style: loginstyle,
+                style: ThemeTextStyle.loginstyle,
                 textAlign: TextAlign.center,
               ),
               Text(
                 "Welcome Back! \n We love you ❤️",
-                style: loginstyle.copyWith(
+                style: ThemeTextStyle.loginstyle.copyWith(
                     fontSize: 20, fontWeight: FontWeight.w300),
                 textAlign: TextAlign.center,
               ),
@@ -49,8 +49,8 @@ class LoginPage extends StatelessWidget {
                 key: _formkey,
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: usernamecontroller,
+                    LoginTextField(
+                      controller: usernamecontroller, hintText: "Enter your UserName",
                       validator: (value) {
                         if (value != null &&
                             value.length < 5 &&
@@ -58,13 +58,12 @@ class LoginPage extends StatelessWidget {
                           return "Your Username should have atleast 5 characters";
                         }
                       },
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'Username'),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    TextFormField(
+                    LoginTextField(
+                      hintText: "Password",
                       controller: passwordcontroller,
                       validator: (value) {
                         if (value != null &&
@@ -73,9 +72,6 @@ class LoginPage extends StatelessWidget {
                           return "Your Password should have atleast 5 characters";
                         }
                       },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'password'),
                     ),
                   ],
                 ),
