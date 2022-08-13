@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_bubble.dart';
+import 'package:simple_chat_app/chat_message_entity.dart';
 import 'package:simple_chat_app/login_page.dart';
 
 import 'chat_input.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatPage extends StatelessWidget {
+   ChatPage({Key? key}) : super(key: key);
 
-  @override
-  State<ChatPage> createState() => _ChatPageState();
-}
+  List<ChatMessageEntity> _messages=[
+    ChatMessageEntity(id: '1234', text: 'Hi this is Junaid !', createdAt: DateTime.now().microsecondsSinceEpoch, author: Author(username: "Junaid")),
+    ChatMessageEntity(id: '2421', text: 'How you doing Lancer !',imageUrl:'https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png' , createdAt: DateTime.now().microsecondsSinceEpoch, author: Author(username: "Junaid")),
+    ChatMessageEntity(id: '251', text: 'Hi Junaid !', createdAt: DateTime.now().microsecondsSinceEpoch, author: Author(username: "Lancer"),)
+  ];
 
-class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final username = ModalRoute.of(context)!.settings.arguments as String;
@@ -36,13 +38,16 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(itemCount:10,itemBuilder: (context,index){
+            child: ListView.builder(itemCount:_messages.length,itemBuilder: (context,index){
               return ChatBubble(
-                  alignment: index%2==0?Alignment.centerLeft : Alignment.centerRight,
-                  message: "This is the first Message");}),
+                  alignment: _messages[index].author.username=='Junaid'?Alignment.centerLeft:Alignment.centerRight,
+                  entity: _messages[index]);}),
           ),
           ChatInput()],
       ),
     );
   }
 }
+
+
+
