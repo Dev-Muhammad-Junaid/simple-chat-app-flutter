@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_chat_app/utils/spaces.dart';
 
 
 
@@ -18,9 +19,7 @@ class ChatBubble extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(message),
-            SizedBox(
-              height: 10,
-            ),
+            verticalSpacing(10),
             Image.network(
               'https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png',
               height: 200,

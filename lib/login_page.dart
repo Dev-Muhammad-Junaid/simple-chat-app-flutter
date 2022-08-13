@@ -1,5 +1,6 @@
 
 import 'package:simple_chat_app/login_text_field.dart';
+import 'package:simple_chat_app/utils/spaces.dart';
 import 'package:simple_chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_page.dart';
@@ -50,7 +51,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                     LoginTextField(
-                      controller: usernamecontroller, hintText: "Enter your UserName",
+                      controller: usernamecontroller, hintText: "Enter your user name",
                       validator: (value) {
                         if (value != null &&
                             value.length < 5 &&
@@ -59,10 +60,9 @@ class LoginPage extends StatelessWidget {
                         }
                       },
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                    verticalSpacing(15),
                     LoginTextField(
+                      needAsteriks: true,
                       hintText: "Password",
                       controller: passwordcontroller,
                       validator: (value) {

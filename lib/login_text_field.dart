@@ -13,6 +13,7 @@ class LoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: needAsteriks,
       controller: controller,
       validator: (value) {
         if (value != null &&
@@ -22,7 +23,7 @@ class LoginTextField extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
-          border: OutlineInputBorder(), hintText: 'Username'),
+          border: OutlineInputBorder(), hintText: hintText),
     );
   }
 }
