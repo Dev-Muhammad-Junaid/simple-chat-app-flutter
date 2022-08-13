@@ -5,7 +5,8 @@ import 'package:simple_chat_app/login_page.dart';
 import 'chat_input.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  final String username;
+  const ChatPage({Key? key,required this.username}) : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -14,13 +15,12 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         elevation: 1,
         title: Text(
-          username,
+          widget.username,
           style: TextStyle(fontSize: 20, color: Colors.black),
         ),
         actions: [
