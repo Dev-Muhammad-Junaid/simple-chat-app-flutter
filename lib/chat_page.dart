@@ -26,7 +26,8 @@ class _ChatPageState extends State<ChatPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context,'/login');
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+              print("Button Pressed");
             },
             icon: Icon(Icons.login),
             color: Colors.black,

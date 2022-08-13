@@ -22,7 +22,7 @@ class LoginTextField extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
-          border: OutlineInputBorder(), hintText: 'Userame'),
+          border: OutlineInputBorder(), hintText: 'Username'),
     );
   }
 }
