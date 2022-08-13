@@ -4,6 +4,9 @@ import 'package:simple_chat_app/utils/spaces.dart';
 import 'package:simple_chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_page.dart';
+import 'package:social_media_buttons/social_media_button.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LoginPage extends StatelessWidget {
   final usernamecontroller = TextEditingController();
@@ -42,10 +45,11 @@ class LoginPage extends StatelessWidget {
                     fontSize: 20, fontWeight: FontWeight.w300),
                 textAlign: TextAlign.center,
               ),
-              Image.network(
-                'https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png',
+              Image.network('https://www.kindpng.com/picc/m/62-622207_super-man-png-transparent-superman-png-png-download.png',
                 height: 200,
               ),
+              // Image.asset('assets/dash2022_4k.png',height: 150,),
+              // verticalSpacing(15),
               Form(
                 key: _formkey,
                 child: Column(
@@ -84,7 +88,19 @@ class LoginPage extends StatelessWidget {
                   child: FlutterLogo(
                     size: 25,
                   )),
-              TextButton(onPressed: () {}, child: Text("All Rights Reserved")),
+              TextButton(onPressed: () async {
+                if(!await launch('https://mjunaid.carrd.co/')){ throw "Failed to load";};
+                print('Link Clicked');
+              }, 
+                  child: Text("https://mjunaid.carrd.co/")),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SocialMediaButton.github(size: 25,url: 'https://github.com/Dev-Muhammad-Junaid',),
+                  SocialMediaButton.twitter(size: 25,url:'https://twitter.com/Jaydee2831',color: Colors.lightBlueAccent,),
+                  SocialMediaButton.linkedin(size: 25,url: 'https://www.linkedin.com/in/mjunaid971/',color: Colors.blueAccent,)
+                ],
+              )
             ],
           ),
         ),
