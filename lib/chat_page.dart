@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:simple_chat_app/chat_bubble.dart';
-import 'package:simple_chat_app/chat_message_entity.dart';
+import 'package:simple_chat_app/widgets/chat_bubble.dart';
+import 'package:simple_chat_app/models/chat_message_entity.dart';
 import 'package:simple_chat_app/models/image_model.dart';
 import 'package:simple_chat_app/repo/image_repository.dart';
 
-import 'chat_input.dart';
+import 'widgets/chat_input.dart';
 
 class ChatPage extends StatefulWidget {
   ChatPage({Key? key}) : super(key: key);
@@ -95,13 +95,7 @@ final ImageRepository _imageRepository = ImageRepository();
       ),
       body: Column(
         children: [
-          FutureBuilder<List<PixelFordImage>>(
-            future: _imageRepository.getNetworkImages(),
-              builder: (BuildContext context, AsyncSnapshot<List<PixelFordImage>> snapshot) {
-                if(snapshot.hasData) return Image.network(snapshot.data![0].urlSmallSize);
-                else return CircularProgressIndicator();
-              }
-          ),
+
           Expanded(
             child: ListView.builder(
                 itemCount: _messages.length,

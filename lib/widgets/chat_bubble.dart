@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/utils/spaces.dart';
 
-import 'chat_message_entity.dart';
+import '../models/chat_message_entity.dart';
 
 class ChatBubble extends StatelessWidget {
    final Alignment alignment;

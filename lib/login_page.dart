@@ -1,5 +1,5 @@
 
-import 'package:simple_chat_app/login_text_field.dart';
+import 'package:simple_chat_app/widgets/login_text_field.dart';
 import 'package:simple_chat_app/utils/spaces.dart';
 import 'package:simple_chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
