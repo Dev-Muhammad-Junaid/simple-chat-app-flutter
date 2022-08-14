@@ -76,6 +76,7 @@ final ImageRepository _imageRepository = ImageRepository();
         .settings
         .arguments as String;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         elevation: 1,
