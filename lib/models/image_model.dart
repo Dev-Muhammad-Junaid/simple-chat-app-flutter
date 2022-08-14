@@ -16,7 +16,7 @@ class PixelFordImage {
       required this.urlFullSize, required this.urlSmallSize});
 
   factory PixelFordImage.fromJson(Map<String, dynamic> json) => _$PixelFordImageFromJson(json);
-  Map<String,dynamic> toJson() => _$PixelFordImageFromJson(this);
+  Map<String,dynamic> toJson() => _$PixelFordImageToJson(this);
 
 
 }
