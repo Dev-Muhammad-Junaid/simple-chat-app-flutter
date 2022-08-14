@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_bubble.dart';
 import 'package:simple_chat_app/chat_message_entity.dart';
-import 'package:http/http.dart' as http;
 import 'package:simple_chat_app/models/image_model.dart';
+import 'package:simple_chat_app/repo/image_repository.dart';
 
 import 'chat_input.dart';
 
@@ -61,19 +61,7 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
-  Future<List<PixelFordImage>> _getNetworkImages() async {
-    var endpointURL = Uri.parse("https://pixelford.com/api2/images");
-    final response = await http.get(endpointURL);
-    if (response.statusCode == 200) {
-      final List<dynamic> decodedList = jsonDecode(response.body) as List;
-      final List<PixelFordImage> _imageslist =
-      decodedList.map((e) => PixelFordImage.fromJson(e)).toList();
-      print(_imageslist[0].urlFullSize);
-      return _imageslist;
-    }
-    else
-      throw "API NOT WORKING";
-  }
+final ImageRepository _imageRepository = ImageRepository();
 
   @override
   void initState() {
@@ -108,7 +96,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           FutureBuilder<List<PixelFordImage>>(
-            future: _getNetworkImages(),
+            future: _imageRepository.getNetworkImages(),
               builder: (BuildContext context, AsyncSnapshot<List<PixelFordImage>> snapshot) {
                 if(snapshot.hasData) return Image.network(snapshot.data![0].urlSmallSize);
                 else return CircularProgressIndicator();
