@@ -37,7 +37,7 @@ class _ChatPageState extends State<ChatPage> {
         author: Author(username: 'Junaid')),
     ChatMessageEntity(
         id: '251',
-        text: 'Hi ${context.read<AuthService>().getUsername()}',
+        text: 'Hi, Junaid',
         createdAt: DateTime
             .now()
             .microsecondsSinceEpoch,
@@ -48,7 +48,7 @@ class _ChatPageState extends State<ChatPage> {
         createdAt: DateTime
             .now()
             .microsecondsSinceEpoch,
-        author: Author(username: context.read<AuthService>().getUsername().toString())),
+        author: Author(username: context.read<AuthService>().getUsername()!)),
     ChatMessageEntity(
         id: '251',
         text: 'Check this !',
