@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_chat_app/models/chat_message_entity.dart';
 import 'package:simple_chat_app/widgets/image_picker.dart';
+
+import '../models/auth_service.dart';
 
 class ChatInput extends StatefulWidget {
   String _selectedimageurl = '';
@@ -16,12 +19,13 @@ class ChatInput extends StatefulWidget {
 class _ChatInputState extends State<ChatInput> {
   final ChatEditingController = TextEditingController();
 
-  void onSendButtonPressed() {
+  void onSendButtonPressed() async {
+    String? userNamefromSharedPref = await context.read<AuthService>().getUsername();
     final newChatMessage = ChatMessageEntity(
         text: ChatEditingController.text,
         createdAt: DateTime.now().microsecondsSinceEpoch,
         id: '2001',
-        author: Author(username: "Junaid"));
+        author: Author(username: userNamefromSharedPref!));
     widget.onSubmit(newChatMessage);
     ChatEditingController.clear();
     //Check if selectedimage is empty or not

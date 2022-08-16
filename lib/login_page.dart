@@ -1,4 +1,5 @@
 
+import 'package:simple_chat_app/models/auth_service.dart';
 import 'package:simple_chat_app/widgets/login_text_field.dart';
 import 'package:simple_chat_app/utils/spaces.dart';
 import 'package:simple_chat_app/utils/textfield_styles.dart';
@@ -6,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:simple_chat_app/chat_page.dart';
 import 'package:social_media_buttons/social_media_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
+import 'package:provider/provider.dart';
 class LoginPage extends StatelessWidget {
   final usernamecontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
 
-  void _loginuser(context) {
+  Future<void> _loginuser(BuildContext context) async {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print(usernamecontroller.text);
       print(passwordcontroller.text);
       print("logged in successfully");
+      await context.read<AuthService>().loginUser(usernamecontroller.text);
       Navigator.pushReplacementNamed(context, '/chat',arguments: '${usernamecontroller.text}');
     } else {
       print("Failed to login");
@@ -81,8 +82,8 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              ElevatedButton(onPressed: (){
-                _loginuser(context);
+              ElevatedButton(onPressed: () async {
+                await _loginuser(context);
               }, child: Text("Login Now")),
               OutlinedButton(
                   onPressed: () {},

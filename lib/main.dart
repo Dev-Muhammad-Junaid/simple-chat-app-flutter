@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 import 'chat_page.dart';
 import 'login_page.dart';
+import 'models/auth_service.dart';
 
 void main() {
-  runApp(ChatApp());
+  runApp(Provider(create: (BuildContext context) { return AuthService();  },
+  child: ChatApp()));
 }
 
 
