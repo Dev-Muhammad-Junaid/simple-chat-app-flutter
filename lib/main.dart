@@ -21,8 +21,19 @@ class ChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(canvasColor:Colors.transparent,primarySwatch: Colors.deepPurple,appBarTheme: AppBarTheme(color: Colors.grey,foregroundColor: Colors.black)),
-      initialRoute: '/login',
-    routes: {
+      home: FutureBuilder<bool>(
+        future: context.read<AuthService>().isLoggedIn(),
+        builder: (context, AsyncSnapshot<bool> snapshot) {
+          if(snapshot.connectionState == ConnectionState.done)
+            {
+              if(snapshot.hasData && snapshot.data!)
+                return ChatPage();
+            } else
+              return LoginPage();
+          return CircularProgressIndicator();
+        }
+      ),
+      routes: {
         '/login': (context) => LoginPage(),
         '/chat' : (context) => ChatPage(),
     },);
