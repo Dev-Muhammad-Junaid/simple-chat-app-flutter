@@ -94,7 +94,7 @@ final ImageRepository _imageRepository = ImageRepository();
           ),
           IconButton(
             onPressed: () {
-              // context.read<AuthService>().updateUserName('New User');
+              context.read<AuthService>().logoutUser();
               Navigator.pushReplacementNamed(context, '/login');
             },
             icon: Icon(Icons.login),

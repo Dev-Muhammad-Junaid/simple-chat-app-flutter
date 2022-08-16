@@ -29,8 +29,8 @@ class ChatApp extends StatelessWidget {
               if(snapshot.hasData && snapshot.data!)
                 return ChatPage();
             } else
-              return LoginPage();
-          return CircularProgressIndicator();
+              return  CircularProgressIndicator();
+          return LoginPage();
         }
       ),
       routes: {

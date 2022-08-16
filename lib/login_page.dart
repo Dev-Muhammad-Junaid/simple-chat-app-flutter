@@ -58,26 +58,12 @@ class LoginPage extends StatelessWidget {
                   children: [
                     LoginTextField(
                       controller: usernamecontroller, hintText: "Enter your user name",
-                      validator: (value) {
-                        if (value != null &&
-                            value.length < 5 &&
-                            value.isNotEmpty) {
-                          return "Your Username should have atleast 5 characters";
-                        }
-                      },
                     ),
                     verticalSpacing(15),
                     LoginTextField(
                       needAsteriks: true,
                       hintText: "Password",
                       controller: passwordcontroller,
-                      validator: (value) {
-                        if (value != null &&
-                            value.length < 5 &&
-                            value.isNotEmpty) {
-                          return "Your Password should have atleast 5 characters";
-                        }
-                      },
                     ),
                   ],
                 ),
