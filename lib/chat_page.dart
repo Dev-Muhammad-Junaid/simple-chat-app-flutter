@@ -73,28 +73,34 @@ final ImageRepository _imageRepository = ImageRepository();
 
   @override
   Widget build(BuildContext context) {
-    final username = ModalRoute
-        .of(context)!
-        .settings
-        .arguments as String;
+    final username = context.watch<AuthService>().getUsername();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         elevation: 1,
         title: Text(
-          username,
+          username!,
           style: TextStyle(fontSize: 20, color: Colors.black),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              context.read<AuthService>().logoutUser();
+              context.read<AuthService>().updateUserName('New User');
+              // Navigator.pushReplacementNamed(context, '/login');
+            },
+            icon: Icon(Icons.crop_square_sharp),
+            color: Colors.black,
+          ),
+          IconButton(
+            onPressed: () {
+              // context.read<AuthService>().updateUserName('New User');
               Navigator.pushReplacementNamed(context, '/login');
             },
             icon: Icon(Icons.login),
             color: Colors.black,
           ),
+
         ],
       ),
       body: Column(

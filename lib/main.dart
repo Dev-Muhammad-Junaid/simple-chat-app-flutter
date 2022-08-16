@@ -9,7 +9,7 @@ import 'models/auth_service.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await AuthService.init();
-  runApp(Provider(create: (BuildContext context) { return AuthService();  },
+  runApp(ChangeNotifierProvider(create: (BuildContext context) { return AuthService();  },
   child: ChatApp()));
 }
 
