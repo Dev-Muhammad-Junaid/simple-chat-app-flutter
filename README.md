@@ -4,7 +4,7 @@ A simple chat app in Flutter for beginners
 =======
 # simple_chat_app
 
-A new Flutter project.
+A Flutter Chat App UI for both Web and Mobile. The ability to send local messaged and load images from Rest API as well.
 
 ## Getting Started
 
