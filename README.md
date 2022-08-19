@@ -8,6 +8,9 @@ A Flutter Chat App UI for both Web and Mobile. The ability to send local message
 
 ![Chat UI mobile](https://user-images.githubusercontent.com/65047962/185701412-8cb62284-431a-4412-b15b-a1f127a5856b.png)
 
+![Chat UI web png](https://user-images.githubusercontent.com/65047962/185701806-266e2dcb-3985-45d5-9aa4-3f9b1a83e66c.png)
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
